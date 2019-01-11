@@ -9,4 +9,4 @@ Its a basic Traffic loop on path. Its done in sop solver using VEX in Wrangle.
 Cars randomly spread along path drive in one direction, slow and stop in front of obstacles and other cars.
 Detection is quite primitive
 
-![Image of Yaktocat](/home/pa/Desktop/TEMP_HOU/out2.gif)
+![Image of Yaktocat](https://github.com/szawel/HOU_Share/blob/master/gif/Trafficv01.gif)
