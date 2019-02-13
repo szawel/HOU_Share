@@ -11,3 +11,21 @@ Detection is quite primitive
 
 ![Traffic_v01_cam1](https://github.com/szawel/HOU_Share/blob/master/gif/Traffic_v01_cam1.gif)
 ![Traffic_v01_cam2](https://github.com/szawel/HOU_Share/blob/master/gif/Traffic_v01_cam2.gif)
+
+
+### Wrangle
+Wrangle_v01.hiplc
+##### Point Connection
+
+Simple point connection using Wrangle Sop
+
+```C++
+// point connection
+int pr = addprim( geoself(), "polyline" );
+
+addvertex( geoself(), pr, 0 );
+
+for ( int i = 0; i < @numpt; i++ ){
+    addvertex( geoself(), pr, i );
+};
+```
