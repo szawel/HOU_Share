@@ -30,7 +30,8 @@ for ( int i = 0; i < @numpt; i++ ){
 };
 ```
 #### Path Extention
-extend path  
+extend path
+![Traffic_v01_cam2](https://github.com/szawel/HOU_Share/blob/master/gif/wrangle_path_extension.gif)
 ```C++
 // path | line | curve exten tool
 float ex_len = ch( "ex_len" );                      // length control
@@ -68,4 +69,11 @@ if(@ptnum==0){
         addvertex(geoself(), pr, pt);
     }
 }
+```
+
+
+### Extra
+ffmpeg gif from sequence
+```Bash
+ffmpeg -f image2 -i .\in_%005d.png out.gif
 ```
