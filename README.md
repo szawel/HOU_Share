@@ -15,9 +15,9 @@ Detection is quite primitive
 
 ### Wrangle
 Wrangle_v01.hiplc
-##### Point Connection
 
-Simple point connection using Wrangle Sop
+#### Point Connection
+point connection using Wrangle Sop
 
 ```C++
 // point connection
@@ -28,4 +28,44 @@ addvertex( geoself(), pr, 0 );
 for ( int i = 0; i < @numpt; i++ ){
     addvertex( geoself(), pr, i );
 };
+```
+#### Path Extention
+extend path  
+```C++
+// path | line | curve exten tool
+float ex_len = ch( "ex_len" );                      // length control
+vector pos[];                                       // empty array
+
+// calculate extendet end poins
+vector near_dir = normalize( point(0,"P",0) - point(0,"P",1) );
+vector near_end_P = point(0,"P",0) + ( near_dir * ex_len );
+vector far_dir = normalize( point(0,"P",@numpt-1) - point(0,"P",@numpt-2) );
+vector far_end_P = point(0,"P",@numpt-1) + ( far_dir * ex_len );
+
+// fill array
+insert(pos,0,far_end_P);
+for( int i = 0; i<@numpt; i++){
+    vector ptP = point(0,"P",i);
+    insert(pos,i,ptP);
+}
+insert(pos,0,near_end_P);
+
+// remove all prim and point
+removeprim(geoself(),0,0);
+removepoint(geoself(),@ptnum);
+
+// add nev prim
+int pr = addprim(geoself(), "polyline");
+// Start the curve with our point
+addvertex(geoself(), pr, @ptnum);
+if(@ptnum==0){
+    for (int i = 0; i < len(pos); i++)
+    {
+        int pt = addpoint(geoself(), i);
+        // write a new position
+        setpointattrib(geoself(), "P", pt, pos[i]);
+        // Connect the new point to our curve.
+        addvertex(geoself(), pr, pt);
+    }
+}
 ```
