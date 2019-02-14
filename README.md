@@ -32,7 +32,7 @@ for ( int i = 0; i < @numpt; i++ ){
 #### Path Extention
 extend path on both ends, by adding and connectiong two points
 ![Traffic_v01_cam2](https://github.com/szawel/HOU_Share/blob/master/gif/wrangle_path_extension.gif)
-copy and paste do VEXpression window in wrangle
+copy and paste to VEXpression window in wrangle
 ```C++
 // path | line | curve exten tool
 float ex_len = ch( "ex_len" );                      // length control
