@@ -1,6 +1,6 @@
 # HOU Share
 The purpose of this repository is to share and save some test and examples from
-sidefx Houdini. There is no predefined order to it, just project file and small description.
+Sidefx Houdini. There is no predefined order to it, just project file and small description.
 All files are in Houdini Indie Edition so extension is .hiplc  not .hip
 if VEX code will be essential, code will be include in README.md file.
 
@@ -30,8 +30,9 @@ for ( int i = 0; i < @numpt; i++ ){
 };
 ```
 #### Path Extention
-extend path
+extend path on both ends, by adding and connectiong two points
 ![Traffic_v01_cam2](https://github.com/szawel/HOU_Share/blob/master/gif/wrangle_path_extension.gif)
+copy and paste do VEXpression window in wrangle
 ```C++
 // path | line | curve exten tool
 float ex_len = ch( "ex_len" );                      // length control
@@ -75,5 +76,5 @@ if(@ptnum==0){
 ### Extra
 ffmpeg gif from sequence
 ```Bash
-ffmpeg -f image2 -i .\in_%005d.png out.gif
+ffmpeg -f image2 -i in_%005d.png out.gif
 ```
