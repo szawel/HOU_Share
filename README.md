@@ -72,6 +72,12 @@ if(@ptnum==0){
 }
 ```
 
+### Camera Focus Distance
+Calculate the distance to object from camera "focus_target"
+```C++
+vlength(vtorigin(".","../focus_target"))
+```
+
 
 ### Extra
 ffmpeg gif from sequence
