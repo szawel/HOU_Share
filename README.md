@@ -78,6 +78,15 @@ Calculate the distance to object from camera "focus_target"
 vlength(vtorigin(".","../focus_target"))
 ```
 
+### Redshift Instances from file
+
+```C++
+int nr = fit01(rand(@ptnum),0,24);
+string filebase = chs("rs_without_fnum", 0);
+string filerest = sprintf(".%02d.rs", nr);
+s@instancefile = concat(filebase, filerest);
+```
+
 
 ### Extra
 ffmpeg gif from sequence
