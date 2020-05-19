@@ -85,8 +85,17 @@ int nr = fit01(rand(@ptnum),0,24);
 string filebase = chs("rs_without_fnum", 0);
 string filerest = sprintf(".%02d.rs", nr);
 s@instancefile = concat(filebase, filerest);
-```
+``` 
 
+### Redshift Instances from file v2 
+
+```C++
+f@pscale = 0.001;
+
+int rnum = ceil(rand(@id) * 17);
+
+s@instance = "/obj/Shell" + itoa(rnum);
+```
 
 ### Extra
 ffmpeg gif from sequence
