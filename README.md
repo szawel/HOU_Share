@@ -109,6 +109,6 @@ Markdown | Less | Pretty
 *Still* | `renders` | **nicely**
 % | modulus | remainder on integer divisionie. 5 % 2 results in 1       4 % 2 results in 0
 && | AND | logical operator  (x > 1) &&  (x < 10)  when both are true, it is truemust have a complete condition on each side
-| || | OR | logical operator  (x > 1) || (x < 10) when both are false, it is false, otherwise true(on the keyboard it is located above the enter key)
+| `||`| OR | logical operator  (x > 1) || (x < 10) when both are false, it is false, otherwise true(on the keyboard it is located above the enter key)
 
 
