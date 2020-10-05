@@ -102,3 +102,12 @@ ffmpeg gif from sequence
 ```Bash
 ffmpeg -f image2 -i in_%005d.png out.gif
 ```
+
+
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+% | modulus | remainder on integer divisionie. 5 % 2 results in 1       4 % 2 results in 0
+&& | AND | logical operator  (x > 1) &&  (x < 10)  when both are true, it is truemust have a complete condition on each side
+
+
