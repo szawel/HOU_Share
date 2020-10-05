@@ -106,9 +106,15 @@ ffmpeg -f image2 -i in_%005d.png out.gif
 
 Markdown | Less | Pretty
 --- | --- | ---
-*Still* | `renders` | **nicely**
-% | modulus | remainder on integer divisionie. 5 % 2 results in 1       4 % 2 results in 0
-&& | AND | logical operator  (x > 1) &&  (x < 10)  when both are true, it is truemust have a complete condition on each side
-| `||`| OR | logical operator  (x > 1) || (x < 10) when both are false, it is false, otherwise true(on the keyboard it is located above the enter key)
+`%` | modulus | remainder on integer division. `5 % 2` results in `14 % 2` results in 0
+`&&` | AND | logical operator `(x > 1) && (x < 10)` when both are true, it is true must have a complete condition on each side
+` Pipe * 2` | OR | logical operator `(x > 1) PipePipe (x < 10)` when both are false, it is false, otherwise true(on the keyboard it is located above the enter key)
+`>=``<=` | - | greater than or equal(Do not reverse the order –won’t work)less than or equal
+`<``>` | - | less than greater than
+`==` | equal | is something equal –this is because = is for assignment== is a comparison this is by far the hardest thing to get used to for new users
+`!=not` | equal | - |
+` `` `| backticks | - | to convert an expression into a string ie. `ch(“../someparameter”)` in the font node would print that verbatim, but putting this i backticks would give me the value
+`if` | if | syntax is odd in Houdini if ( condition, then part, else part )for example in a switch statement you might have if ($F > 0, 1, 0)note the thepart or the else part could be another if statementie. if ( $F > 0, if ( $F > 2, 1, 0 ), 0 )
+`ifs` | - | as above but returns a string,for example `ifs($F>1,”Hi”,”There”)`
 
 
