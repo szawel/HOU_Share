@@ -97,6 +97,16 @@ int rnum = ceil(rand(@id) * 17);
 s@instance = "/obj/Shell" + itoa(rnum);
 ```
 
+### Random Variant Attribute
+
+```C++
+int nr = chi("nr");
+float seed = chf("seed");
+
+i@variant = rint(fit01(rand(@ptnum+seed),0,nr));
+```
+
+
 ### Extra
 ffmpeg gif from sequence
 ```Bash
