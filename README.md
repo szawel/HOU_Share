@@ -106,6 +106,25 @@ float seed = chf("seed");
 i@variant = rint(fit01(rand(@ptnum+seed),0,nr));
 ```
 
+### FBX Sequence
+
+In top shelf right click on an empty area `New Tool` select `Script` tab
+and copy code below
+```
+node = hou.node("/obj/geo1/rop_fbx2")
+```
+```C++
+import hou
+
+node = hou.node("/obj/geo1/rop_fbx2")
+
+for i in range(1,13):
+    hou.setFrame(i)
+    node.render() 
+```
+
+
+
 
 ### Extra
 ffmpeg gif from sequence
