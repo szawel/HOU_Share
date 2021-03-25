@@ -111,7 +111,7 @@ i@variant = rint(fit01(rand(@ptnum+seed),0,nr));
 In top shelf right click on an empty area `New Tool` select `Script` tab
 and copy code below
 ```
-node = hou.node("/obj/geo1/rop_fbx2")
+node = hou.node("/path_to_fbx_export_operator")
 ```
 ```C++
 import hou
