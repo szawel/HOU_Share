@@ -124,6 +124,14 @@ for i in range(1,13):
 ```
 
 
+### Select polygon by verex count
+```
+primvertexcount(0, @primnum) <= 3
+primvertexcount(0, @primnum) == 4
+primvertexcount(0, @primnum) > 4
+```
+
+
 
 
 ### Extra
