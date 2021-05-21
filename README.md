@@ -131,7 +131,12 @@ primvertexcount(0, @primnum) == 4
 primvertexcount(0, @primnum) > 4
 ```
 
+### Houdini and ffmpeg
 
+```
+PDG_IMAGEMAGICK = "your path here"
+PDG_FFMPEG = "your path here"
+```
 
 
 ### Extra
