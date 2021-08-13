@@ -131,6 +131,18 @@ primvertexcount(0, @primnum) == 4
 primvertexcount(0, @primnum) > 4
 ```
 
+### Scale rig individual bones by it local origin
+set-up `axis` to `1,1,1`
+
+```
+float amount = chf("amount");
+amount = $PI*amount;
+vector axis = chv('axis');
+
+@scale = quaternion(amount, axis);
+```
+
+
 ### Houdini and ffmpeg
 
 ```
