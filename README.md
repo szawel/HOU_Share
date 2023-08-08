@@ -228,8 +228,15 @@ Select node and run script
 
 
 ``` Python
-# Import required modules
 import hou
+
+# Function to sanitize the node name
+def sanitize_node_name(raw_name):
+    valid_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_"
+    sanitized = ''.join(c for c in raw_name if c in valid_chars)
+    if not sanitized[0].isalpha():  # If the name doesn't start with a letter, prefix it with 'n'
+        sanitized = "n" + sanitized
+    return sanitized
 
 # 1. Get the selected node.
 selected_nodes = hou.selectedNodes()
@@ -251,15 +258,37 @@ subnet = obj_context.createNode('subnet', node_name="TiePoints_nested")
 # 3. For each point in the selected node, create a node inside the subnet.
 for point in geo.points():
     id_value = point.attribValue('id')
-    # Convert the id_value to string just to be sure it's a valid node name.
-    # Also, prefix with "node_" to ensure naming validity.
-    node_name = "cam_" + str(id_value)
-    # Using the id as the node name. Assuming a node type "null" for this example.
+    node_name = sanitize_node_name("cam_" + str(id_value))
+    
+    # Create the node inside the subnet
     created_node = subnet.createNode('null', node_name=node_name)
+
+    # Set the translation parameters of the created node based on the point position.
+    pos = point.position()
+    created_node.parm('tx').set(pos[0])
+    created_node.parm('ty').set(pos[1])
+    created_node.parm('tz').set(pos[2])
 
     # Connect the created node to the subnet's first input.
     created_node.setInput(0, subnet.indirectInputs()[0])
 
-# Lay out the nodes nicely inside the subnet.
+# Lay out the nodes nicely inside the subnet, if required.
 subnet.layoutChildren()
+
+    
+    # Create the node inside the subnet
+    created_node = subnet.createNode('null', node_name=node_name)
+
+    # Set the translation parameters of the created node based on the point position.
+    pos = point.position()
+    created_node.parm('tx').set(pos[0])
+    created_node.parm('ty').set(pos[1])
+    created_node.parm('tz').set(pos[2])
+
+    # Connect the created node to the subnet's first input.
+    created_node.setInput(0, subnet.indirectInputs()[0])
+
+# Lay out the nodes nicely inside the subnet, if required.
+subnet.layoutChildren()
+
 ```
