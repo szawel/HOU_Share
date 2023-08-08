@@ -220,3 +220,46 @@ def create_nested_nodes():
 create_nested_nodes()
 
 ```
+
+### Python script
+Script is designe to by write in 
+Houdini `Windows` / `Python Source Editor`</br>
+Select node and run script
+
+
+``` Python
+# Import required modules
+import hou
+
+# 1. Get the selected node.
+selected_nodes = hou.selectedNodes()
+if not selected_nodes:
+    raise ValueError("No node selected!")
+node = selected_nodes[0]
+
+# Extract points from the selected node.
+geo = node.geometry()
+
+# Check if id attribute exists on points
+if not geo.findPointAttrib('id'):
+    raise ValueError("The 'id' attribute does not exist on the points of the selected node!")
+
+# 2. Create the Subnet at obj level.
+obj_context = hou.node('/obj')
+subnet = obj_context.createNode('subnet', node_name="TiePoints_nested")
+
+# 3. For each point in the selected node, create a node inside the subnet.
+for point in geo.points():
+    id_value = point.attribValue('id')
+    # Convert the id_value to string just to be sure it's a valid node name.
+    # Also, prefix with "node_" to ensure naming validity.
+    node_name = "cam_" + str(id_value)
+    # Using the id as the node name. Assuming a node type "null" for this example.
+    created_node = subnet.createNode('null', node_name=node_name)
+
+    # Connect the created node to the subnet's first input.
+    created_node.setInput(0, subnet.indirectInputs()[0])
+
+# Lay out the nodes nicely inside the subnet.
+subnet.layoutChildren()
+```
