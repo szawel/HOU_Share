@@ -172,3 +172,51 @@ Markdown | Less | Pretty
 `ifs` | - | as above but returns a string,for example `ifs($F>1,”Hi”,”There”)`
 
 
+### Python script
+
+``` Python
+import hou
+
+def create_nested_nodes():
+    # Check if a node is selected
+    if len(hou.selectedNodes()) != 1:
+        print("Please select a single node.")
+        return
+
+    # Get the selected node
+    selected_node = hou.selectedNodes()[0]
+
+    # Ensure the selected node is in the geometry context
+    if selected_node.type().category().name() != "Sop":
+        print("Selected node is not in the geometry context.")
+        return
+
+    # Evaluate geometry to extract points
+    geo = selected_node.geometry()
+
+    # Get the parent (object level) node
+    obj_node = selected_node.parent()
+
+    # Create a subnet (or use existing) for the nested nodes
+    subnet_name = "nested_nodes"
+    if subnet_name in [child.name() for child in obj_node.children()]:
+        subnet = obj_node.node(subnet_name)
+    else:
+        subnet = obj_node.createNode("subnet", subnet_name)
+
+    # Create a node for each point
+    for point in geo.points():
+        point_id = point.number()
+        # Name the node based on point id
+        node_name = "point_{}".format(point_id)
+        new_node = subnet.createNode("null", node_name)  # Change "geo" to "null"
+        new_node.moveToGoodPosition()
+
+        # Here you can adjust the position, attributes, etc. of each node based on the point data
+
+    # Layout the nodes nicely
+    subnet.layoutChildren()
+
+create_nested_nodes()
+
+```
